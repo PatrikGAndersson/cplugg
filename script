@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+
+i=0
+
+rm my_new_database
+sleep 2 
+./database_program my_new_database c
+sleep 2 
+echo db created
+sleep 1
+
+while [ $i -le 10 ]
+do
+	./database_program my_new_database s $i Test$i test$i@test.se
+	echo Created user:
+	./database_program my_new_database get $i
+	((i++))
+	sleep 2
+done
+
+sleep 3
+clear
+echo Listing all records in db:
+sleep 1
+./database_program my_new_database list
+
