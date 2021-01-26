@@ -2,6 +2,7 @@
 #include <string.h>
 #include "debug.h"
 
+//comment to test git
 int normal_copy(char* from, char* to, int count)
 {
     int i = 0;
