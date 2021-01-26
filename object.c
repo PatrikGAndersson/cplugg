@@ -4,19 +4,31 @@
 #include "object.h"
 #include <assert.h>
 
-void Object_destroy(void* self)
-{
+//Frees up memory and destroys object
+void Object_destroy(
+    /*Takes an object as argument */void* self)
+{   
+    //Sets obj to the object provided
     Object* obj = self;
 
+
+    //if the is an object
     if(obj) {
+        //Free description
         if (obj->description) free(obj->description);
+        //and free string
         free(obj);
     }
 }
 
-void Object_describe(void* self)
+//Access the description method of an arbitraty object
+void Object_describe(
+    /*Takes an object as argument*/ void* self)
 {
+    //see Object_destroy
     Object* obj = self;
+    
+    //Print the description field of the object
     printf("%s. \n", obj-> description);
 }
 
@@ -37,15 +49,21 @@ int Object_attack(void* self, int damage)
     return 0;
 }
 
+
+
 void* Object_new(size_t size, Object proto, char* description)
-{
+{   
+    assert(description != NULL);
     if(!proto.init) proto.init = Object_init;
     if(!proto.describe) proto.describe = Object_describe;
     if(!proto.destroy) proto.destroy = Object_destroy;
     if(!proto.attack) proto.attack = Object_attack;
     if(!proto.move) proto.move = Object_move;
 
+    //Allocate memory for struct
+    //callocs takes the number of items to be allocated and the size
     Object* el = calloc(1,size);
+    //and store proto there
     *el = proto;
 
     el->description = strdup(description);

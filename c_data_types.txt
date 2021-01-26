@@ -1,0 +1,90 @@
+DATA TYPES:
+    
+    int:
+        Stores a regular integer. Default size is 32 bits.
+
+    double:
+        Holds a large floating point number.
+
+    char:
+        Holds a single 1 byte charachter.
+
+    void:
+        Indicates no type.
+
+    enum:
+        Enumerated types. Works as integers, convert to integers.
+
+TYPE MODIFIERS:
+
+    unsigned:
+        Changes the type so that it does not have negative numbers.
+    
+    signed:
+        Gives the type both positive and negative numbers.
+    
+    long:
+        Uses a larger storage for the type so that it can hold bigger numbers.
+    
+    short:
+        Uses smaller storage for the type so it stores less but 
+        also takes less space
+    
+TYPE QUALIFIERS:
+
+    const:
+        Indicates that the variable can not change after is has been
+        initialized
+    
+    volatile:
+        Indicates that the compiler shouldnt try to optimize the variable/function
+    
+    register:
+        Force the compiler to keep this variable in a register.
+
+TYPE CONVERSION:
+    C uses a sort of "stepped type promotion" mechanism, 
+    where it looks at two operands on either side of an expression, 
+    and promotes the smaller side to match the larger side before 
+    doing the operation
+
+    if we have:
+        long + char - int * double
+    then do this:
+        (double)long - (double)char - (double)int * double
+    to explicitly cast everything end be sure that it is what we want
+
+    IMPORTANT: ALWAYS PROMOTE UP I.E CHAR TO LONG 
+
+TYPE SIZES:
+
+    int8_t: 8 bit signed integer
+
+    uint8_t: 8 bit unsigned integer
+
+    int16_t: 16 bit signed integer
+
+    uint16_t: 16 bit unsigned integer
+
+    int32_t: 32 bit signed integer
+
+    uint32_t: 32 bit unsigned integer
+
+    int64_t: 64 bit signed integer
+
+    uint64_t: 64 bit unsigned integer
+
+    general pattern: (u)int(BITS)_t
+    u = signed/unsigned
+    BITS = number of bits
+
+    macros:
+        INT(N)_MAX = max positive number of signed integer of N bits.
+
+        INT(N)_MIN = max negative number of signed integer of N bits.
+
+        UINT(N)_MAX = max positive number of unsigned integer of N bits
+
+
+
+

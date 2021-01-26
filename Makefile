@@ -1,14 +1,17 @@
 #Standard Makefile
 
+CC=clang
+CFLAGS=-Wall
+OBJ=ex23
 
-CFLAGS=-Wall -g
+all:
+	$(CC) $(CFLAGS) ex23.c -o $(OBJ)
+ex19:
+	
 
-
-all: ex19
-ex19: object.o
 clean:
-	rm -f ex19.c object.o
+	rm -f ex23.c
 exec:
-	./ex19
+	./ex23
 
 
